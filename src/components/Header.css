@@ -1,0 +1,60 @@
+.main-header {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  border-radius: 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.breadcrumbs {
+  font-size: 0.9rem;
+}
+
+.text-muted { color: var(--text-muted); }
+.text-primary { color: var(--text-primary); }
+.font-medium { font-weight: 500; }
+
+.lang-selector {
+  padding: 0.4rem 0.8rem;
+  gap: 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.lang-select {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+}
+
+.lang-select option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.user-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid var(--accent-primary);
+  cursor: pointer;
+}
+
+.user-profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
