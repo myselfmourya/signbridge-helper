@@ -6,12 +6,32 @@
   padding: 1.5rem 1rem;
   background-color: var(--bg-secondary);
   border-right: 1px solid var(--border-color);
-  z-index: 20;
+  z-index: 40;
+  flex-shrink: 0;
+  overflow: hidden;
+  /* Smooth width collapse on desktop */
+  transition: width var(--transition-normal), padding var(--transition-normal), opacity var(--transition-normal);
+}
+
+/* Desktop: collapsed sidebar hides by shrinking width */
+.sidebar:not(.open) {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  opacity: 0;
+  border-right: none;
+}
+
+.sidebar-header-mobile {
+  display: none;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
 .sidebar-logo {
   margin-bottom: 2rem;
   padding: 0 1rem;
+  white-space: nowrap;
 }
 
 .logo-icon {
@@ -22,6 +42,7 @@
   font-weight: 700;
   color: white;
   font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -29,6 +50,7 @@
   font-size: 1.2rem;
   font-weight: 800;
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
 
 .logo-subtitle {
@@ -37,6 +59,7 @@
   font-weight: 500;
   margin-top: 0.2rem;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .sidebar-nav {
@@ -44,6 +67,8 @@
   flex-direction: column;
   gap: 0.35rem;
   flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .nav-link {
@@ -76,4 +101,38 @@
 .sidebar-footer {
   margin-top: auto;
   padding-top: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
 }
+
+/* Responsive Styles — Mobile: Drawer Overlay */
+@media (max-width: 1024px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100dvh;
+    /* Switch to transform-based sliding on mobile */
+    width: 260px !important;
+    padding: 1.5rem 1rem !important;
+    opacity: 1 !important;
+    border-right: 1px solid var(--border-color) !important;
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--transition-normal);
+  }
+  
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .sidebar-header-mobile {
+    display: flex;
+  }
+  
+  .sidebar-logo {
+    margin-bottom: 1.5rem;
+  }
+}
+

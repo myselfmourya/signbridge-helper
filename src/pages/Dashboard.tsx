@@ -1,6 +1,7 @@
 import { ArrowRight, PlayCircle, BookOpen, Users, Globe, Camera as CameraIcon, Volume2, Sparkles, Hand } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -60,38 +61,25 @@ const Dashboard = () => {
   }, [heroFeatures.length]);
 
   return (
-    <div className="dashboard-content animate-fade-in pb-10">
+    <div className="dashboard-content animate-fade-in">
       
       {/* 1. HERO SECTION */}
-      <section style={{ 
-        background: 'linear-gradient(135deg, #a855f7, #8b5cf6, #7c3aed)', 
-        borderRadius: 'var(--radius-xl)', 
-        padding: '3rem 3rem',
-        color: 'white',
-        position: 'relative',
-        display: 'grid',
-        gridTemplateColumns: '1fr minmax(360px, 420px)',
-        gap: '3rem',
-        alignItems: 'center',
-        minHeight: '480px',
-        overflow: 'hidden',
-        marginBottom: '2rem'
-      }}>
+      <section className="hero-section">
          
          <div style={{ zIndex: 2 }}>
 
 
-            <h1 style={{ fontSize: '4rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', color: 'white', letterSpacing: '-1px' }}>
+            <h1 className="hero-title">
                Break Down<br/>
                <span style={{ color: '#fef08a' }}>Communication</span><br/>
                Barriers
             </h1>
 
-            <p style={{ fontSize: '1.2rem', lineHeight: 1.5, opacity: 0.9, marginBottom: '3rem', maxWidth: '90%' }}>
+            <p className="hero-subtitle">
                Master American Sign Language natively. Connect hearts, bridge gaps, transform lives.
             </p>
 
-            <div className="flex" style={{ gap: '1rem', marginBottom: '3rem' }}>
+            <div className="flex hero-buttons" style={{ gap: '1rem', marginBottom: '3rem' }}>
                <button className="btn hover" style={{ background: 'white', color: '#7c3aed', padding: '1rem 2rem', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem' }}>
                   <PlayCircle size={20} /> Start Learning Free
                </button>
@@ -100,7 +88,7 @@ const Dashboard = () => {
                </button>
             </div>
             
-            <div className="flex" style={{ gap: '3rem' }}>
+            <div className="flex hero-stats-row" style={{ gap: '3rem' }}>
                <div className="text-center">
                   <div className="flex-center mx-auto" style={{ width: '48px', height: '48px', background: 'rgba(255,255,255,0.2)', borderRadius: '50%', marginBottom: '0.5rem' }}>
                      <BookOpen size={20} />
@@ -126,12 +114,7 @@ const Dashboard = () => {
          </div>
 
          {/* Hero Widget */}
-         <div style={{ 
-              background: 'rgba(255, 255, 255, 0.15)', backdropFilter: 'blur(16px)', 
-              borderRadius: 'var(--radius-xl)', padding: '2.5rem', border: '1px solid rgba(255,255,255,0.3)',
-              textAlign: 'center', zIndex: 2, position: 'relative', width: '100%',
-              boxShadow: '0 20px 40px rgba(0,0,0,0.1)', transition: 'all 0.4s ease'
-           }}>
+         <div className="hero-widget">
             <div style={{ position: 'absolute', top: '-1rem', left: '-1rem', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(10px)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-full)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 600 }}>
                <span style={{ width: '8px', height: '8px', background: '#4ade80', borderRadius: '50%' }}></span> {currentFeature.stat2Value}
             </div>
@@ -222,7 +205,7 @@ const Dashboard = () => {
          <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#8b5cf6', marginBottom: '0.5rem' }}>Explore Our Features</h2>
          <p className="text-secondary" style={{ marginBottom: '3rem' }}>Click on any feature to discover its power</p>
          
-         <div className="grid grid-cols-2" style={{ gap: '2rem', textAlign: 'left' }}>
+         <div className="grid features-grid" style={{ gap: '2rem', textAlign: 'left', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
             <div className="glass-card flex-col block-hover" style={{ padding: '2.5rem', background: 'white', borderRadius: 'var(--radius-xl)' }}>
                <div className="flex-between" style={{ marginBottom: '1.5rem' }}>
                   <div className="flex-center" style={{ width: '64px', height: '64px', background: '#3b82f6', borderRadius: '1rem', color: 'white' }}>
@@ -323,7 +306,7 @@ const Dashboard = () => {
             Join our community and start making a difference today. Every sign learned is a barrier broken.
          </p>
          
-         <div className="flex-center" style={{ gap: '1rem', marginBottom: '2.5rem' }}>
+         <div className="flex-center bottom-cta-buttons" style={{ gap: '1rem', marginBottom: '2.5rem' }}>
              <button className="btn hover" style={{ background: 'white', color: '#6366f1', padding: '1rem 2rem', borderRadius: 'var(--radius-sm)', fontSize: '1.1rem', display: 'flex', gap: '0.5rem' }}>
                 <Sparkles size={20} /> Begin Your Journey
              </button>

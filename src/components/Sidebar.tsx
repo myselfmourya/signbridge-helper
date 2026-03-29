@@ -1,8 +1,13 @@
 import { NavLink } from 'react-router-dom';
-import { Home, Camera, MessageSquare, Volume2, Globe, TrendingUp, BookOpen } from 'lucide-react';
+import { Home, Camera, MessageSquare, Volume2, Globe, TrendingUp, BookOpen, X } from 'lucide-react';
 import './Sidebar.css';
 
-const Sidebar = () => {
+interface SidebarProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+}
+
+const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   const navItems = [
     { path: '/', label: 'Home', icon: <Home size={18} /> },
     { path: '/recognize', label: 'Sign Recognition', icon: <Camera size={18} /> },
@@ -14,7 +19,13 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
+      <div className="sidebar-header-mobile">
+        <button className="btn-icon mobile-close-btn" onClick={onClose} aria-label="Close menu">
+          <X size={20} />
+        </button>
+      </div>
+      
       <div className="sidebar-logo">
         <div className="flex" style={{ gap: '0.75rem', alignItems: 'center' }}>
           <span className="logo-icon flex-center">SB</span>
@@ -31,6 +42,7 @@ const Sidebar = () => {
             key={item.path} 
             to={item.path} 
             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            onClick={onClose}
           >
             {item.icon}
             <span>{item.label}</span>
